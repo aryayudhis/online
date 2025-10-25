@@ -1,0 +1,915 @@
+/* =============================
+   📱 RESPONSIVE DESIGN SECTION
+   ============================= */
+
+/* Tablet (≤1024px) */
+@media (max-width: 1024px) {
+  header nav ul {
+    gap: 1rem;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .search-box {
+    width: 80%;
+  }
+
+  .menu-container {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+}
+
+/* HP (≤768px) */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  header nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .hero {
+    padding: 2rem 1rem;
+    text-align: center;
+  }
+
+  .search-box {
+    width: 100%;
+  }
+
+  .menu-container {
+    grid-template-columns: 1fr 1fr; /* dua kolom */
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  /* Floating Cart */
+  .cart-toggle {
+    bottom: 1rem;
+    right: 1rem;
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+}
+
+/* HP Kecil (≤480px) */
+@media (max-width: 480px) {
+  .menu-container {
+    grid-template-columns: 1fr; /* satu kolom */
+  }
+
+  .hero h1 {
+    font-size: 1.2rem;
+  }
+
+  .card img {
+    height: 150px;
+  }
+
+  button {
+    font-size: 0.9rem;
+  }
+}
+
+/* RESET DASAR */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: #f9f9f9;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* HEADER / NAVBAR */
+header {
+  background: linear-gradient(90deg, #ff5722, #ff7043);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: white;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  border-bottom: 2px solid white;
+}
+
+/* ==== HERO SECTION ==== */
+.hero {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* === BACKGROUND SLIDER YANG BERGESER PELAN === */
+.hero-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400%; /* 4 gambar */
+  height: 100%;
+  display: flex;
+  animation: slideScroll 30s linear infinite; /* 30s biar pelan */
+}
+
+.hero-slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.6);
+}
+
+/* === ANIMASI SCROLL === */
+@keyframes slideScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-75%); } /* geser 3 gambar (loop) */
+}
+
+/* === KONTEN DI DEPAN === */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 1rem;
+}
+
+.hero-content h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.hero-content input {
+  padding: 0.8rem 1.2rem;
+  width: 400px;
+  border-radius: 50px;
+  border: none;
+  outline: none;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  font-size: 1rem;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
+  z-index: 1;
+}
+
+/* MENU SECTION */
+.menu {
+  padding: 3rem 5%;
+}
+
+.menu h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #ff5722;
+}
+
+.menu-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 1.5rem;
+  justify-content: center; /* biar rata tengah kalau hasil cuma 1 */
+}
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+  max-width: 260px; /* batas lebar biar gak melebar */
+  margin: 0 auto;
+}
+
+
+.card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card h4 {
+  margin: 0.8rem 0 0.3rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card p {
+  color: #ff5722;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.card button {
+  background-color: #ff5722;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card button:hover {
+  background-color: #e64a19;
+}
+.menu-container {
+  transition: all 0.3s ease;
+}
+
+.card {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* 🛒 KERANJANG (Sidebar Modern Drawer) */
+.cart {
+  position: fixed;
+  right: -350px; /* tersembunyi dulu */
+  bottom: 0;
+  width: 320px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-radius: 20px 0 0 20px;
+  box-shadow: -4px 0 25px rgba(0, 0, 0, 0.15);
+  padding: 1.5rem;
+  z-index: 200;
+  transition: all 0.4s ease;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* Saat aktif (ditampilkan) */
+.cart.active {
+  right: 0;
+}
+
+.cart h3 {
+  color: #ff5722;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+#cart-items {
+  list-style: none;
+  margin-bottom: 1rem;
+  padding-right: 0.5rem;
+}
+
+#cart-items li {
+  margin: 0.6rem 0;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#cart-items li span {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+#total {
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-align: right;
+  margin-top: 0.5rem;
+  color: #333;
+}
+
+#checkout-btn {
+  display: block;
+  width: 100%;
+  background: linear-gradient(90deg, #ff7043, #ff5722);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.8rem;
+  transition: 0.3s;
+}
+
+#checkout-btn:hover {
+  background: linear-gradient(90deg, #ff8a65, #ff5722);
+  transform: scale(1.02);
+}
+.cart-count {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff1744;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 7px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: none;
+  transition: all 0.3s ease;
+}
+
+.cart-count.show {
+  display: inline;
+}
+
+/* 🧭 FLOATING CART ICON */
+/* 🛒 FLOATING ICON */
+.cart-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  background: linear-gradient(135deg, #ff7043, #ff5722);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 1.5rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 300;
+}
+
+.cart-toggle:hover {
+  transform: scale(1.1);
+}
+
+.cart-count {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #e53935;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s ease;
+}
+
+.cart-count.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* 🛍️ PANEL KERANJANG (MUNCUL SAAT DIKLIK) */
+.cart {
+  position: fixed;
+  right: 2rem;
+  bottom: 6rem;
+  width: 320px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  z-index: 200;
+  max-height: 70vh;
+  overflow-y: auto;
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.cart.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.cart h3 {
+  color: #ff5722;
+  margin-bottom: 0.8rem;
+  font-size: 1.2rem;
+}
+
+#cart-items {
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+#cart-items li {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5rem 0;
+}
+
+#total {
+  font-weight: 600;
+  text-align: right;
+  margin-top: 0.5rem;
+}
+
+#checkout-btn {
+  display: block;
+  width: 100%;
+  background: linear-gradient(90deg, #ff7043, #ff5722);
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.8rem;
+  transition: 0.3s;
+}
+
+#checkout-btn:hover {
+  background: linear-gradient(90deg, #ff8a65, #ff5722);
+  transform: scale(1.02);
+}
+.cart-item-info {
+  font-weight: 500;
+  flex: 1;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.qty-btn, .delete-btn {
+  background: #ff7043;
+  border: none;
+  color: white;
+  font-size: 14px;
+  border-radius: 6px;
+  width: 26px;
+  height: 26px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.qty-btn:hover {
+  background: #ff5722;
+}
+
+.delete-btn {
+  background: #f44336;
+}
+.delete-btn:hover {
+  background: #d32f2f;
+}
+
+.cart-item-price {
+  text-align: right;
+  font-weight: 600;
+}
+
+
+
+/* PESANAN SAYA */
+.orders {
+  padding: 3rem 5%;
+}
+
+.orders h2 {
+  color: #ff5722;
+  margin-bottom: 1.5rem;
+}
+
+.order-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s ease;
+}
+
+.order-card:hover {
+  transform: translateY(-3px);
+}
+
+.order-card h3 {
+  color: #ff5722;
+  margin-bottom: 0.5rem;
+}
+
+.order-card ul {
+  list-style: none;
+  margin-left: 1rem;
+}
+
+.order-card ul li {
+  margin: 0.3rem 0;
+}
+
+.order-card p {
+  margin-top: 0.5rem;
+}
+.pesanan-container {
+  max-width: 700px;
+  margin: 80px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+#pesanan-list li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+  gap: 10px;
+}
+
+.pesanan-img {
+  width: 60px;
+  height: 60px;
+  border-radius: 10px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.qty-btn, .delete-btn {
+  background: #ff7043;
+  border: none;
+  color: white;
+  font-size: 14px;
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.qty-btn:hover {
+  background: #ff5722;
+}
+
+.delete-btn {
+  background: #f44336;
+}
+.delete-btn:hover {
+  background: #d32f2f;
+}
+#pesanan-total {
+  margin-top: 20px;
+  font-size: 18px;
+  text-align: right;
+  font-weight: 600;
+}
+.action-buttons {
+  display: flex;
+  justify-content: flex-end; /* tombol rata kanan */
+  align-items: center;
+  gap: 16px; /* jarak antar tombol */
+  margin-top: 20px;
+  padding-right: 10px;
+}
+
+.clear-btn,
+.update-btn {
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  min-width: 180px; /* biar lebar tombol konsisten */
+  text-align: center;
+}
+
+/* Tombol Batalkan */
+.clear-btn {
+  background-color: #d32f2f;
+}
+.clear-btn:hover {
+  background-color: #b71c1c;
+  transform: translateY(-2px);
+}
+
+/* Tombol Update */
+.update-btn {
+  background-color: #43a047;
+}
+.update-btn:hover {
+  background-color: #2e7d32;
+  transform: translateY(-2px);
+}
+/* FOOTER */
+footer {
+  background: linear-gradient(90deg, #ff5722, #ff7043);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .cart {
+    position: fixed;
+    right: -350px; /* disembunyikan */
+    bottom: 0;
+    width: 320px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px 0 0 20px;
+    box-shadow: -4px 0 25px rgba(0, 0, 0, 0.15);
+    padding: 1.5rem;
+    transition: all 0.4s ease;
+    z-index: 200;
+  }
+  
+  .cart.active {
+    right: 0; /* muncul dari kanan */
+  }
+  
+
+  .hero input {
+    width: 80%;
+  }
+
+  .menu {
+    padding: 2rem;
+  }
+
+  .orders {
+    padding: 2rem;
+  }
+}
+body {
+  font-family: 'Poppins', sans-serif;
+  background: #fafafa;
+  margin: 0;
+  color: #333;
+}
+
+header {
+  background: #ff5722;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.logo {
+  font-size: 24px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a.active {
+  border-bottom: 2px solid #fff;
+}
+
+main.pesanan-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  padding: 40px;
+  flex-wrap: wrap;
+}
+
+/* === KARTU PESANAN === */
+.order-card, .pesanan-terbaru-box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  width: 420px;
+  transition: all 0.3s ease;
+}
+
+.order-card:hover, .pesanan-terbaru-box:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.12);
+}
+ul {
+  padding: 0;
+  list-style: none;
+  margin: 0;
+}
+
+/* === ITEM PESANAN === */
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pesanan-img {
+  width: 55px;
+  height: 55px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.cart-item-controls {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  justify-content: center;
+}
+
+.qty-btn {
+  background: #ff7043;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.qty-btn:hover {
+  background: #ff5722;
+}
+
+.delete-btn {
+  background: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 5px 9px;
+  cursor: pointer;
+}
+
+.cart-item-price {
+  font-weight: 600;
+  text-align: right;
+}
+
+#pesanan-list li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.total-harga {
+  text-align: right;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+/* === BUTTONS === */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.btn-danger {
+  background: #d32f2f;
+}
+
+.btn-danger:hover {
+  background: #b71c1c;
+}
+
+.btn-success {
+  background: #388e3c;
+}
+
+.btn-success:hover {
+  background: #2e7d32;
+}
+
+/* === PESANAN TERBARU === */
+.pesanan-terbaru-box {
+  border-left: 11px solid #ff5722;
+}
+
+.pesanan-terbaru-box h2 {
+  color: #ff5722;
+}
+
+.pesanan-terbaru {
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.8;
+}

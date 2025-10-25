@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pesanan Saya - FoodieGo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="logo">FoodieGo 🍔</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Beranda</a></li>
+        <li><a href="pesanan.html" class="active">Pesanan Saya</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="pesanan-container">
+    <h2>Pesanan Saya</h2>
+    <ul id="pesanan-list"></ul>
+    <h3 id="pesanan-total"></h3>
+
+    <div class="action-buttons">
+      <button id="btn-clear" class="clear-btn">Batalkan Semua Pesanan</button>
+      <button id="btn-update" class="update-btn">Update Pesanan</button>
+    </div>
+    
+    
+  </main>
+
+  <section class="pesanan-terbaru-container">
+    <h2 style="color: #ff5722;">Pesanan Saya</h2>
+    <div id="pesanan-terbaru" class="pesanan-terbaru-box"></div>
+  </section>
+  
+
+  <footer>
+    <p>© 2025 FoodieGo Copyright by Kelompok 8</p>
+  </footer>
+
+  <script>
+    const orderList = document.getElementById("order-list");
+    const pesananSaya = JSON.parse(localStorage.getItem("pesananSaya")) || [];
+
+    if (pesananSaya.length === 0) {
+      orderList.innerHTML = "<p>Belum ada pesanan yang dilakukan.</p>";
+    } else {
+      let totalHarga = 0;
+      const card = document.createElement("div");
+      card.classList.add("order-card");
+      card.innerHTML = "<h3>Pesanan Terbaru</h3>";
+
+      const ul = document.createElement("ul");
+      pesananSaya.forEach(item => {
+        totalHarga += item.price * item.qty;
+        const li = document.createElement("li");
+        li.textContent = `${item.name} x${item.qty} - Rp ${(item.price * item.qty).toLocaleString()}`;
+        ul.appendChild(li);
+      });
+
+      const total = document.createElement("p");
+      total.innerHTML = `<strong>Total: Rp ${totalHarga.toLocaleString()}</strong>`;
+
+      card.appendChild(ul);
+      card.appendChild(total);
+      orderList.appendChild(card);
+    }
+  </script>
+  <script src="pesanan.js"></script>
+</body>
+</html>
