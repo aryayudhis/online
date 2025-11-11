@@ -3,15 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pesanan Saya - FoodieGo</title>
+  <title>Pesanan Saya - Warmam</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <!-- 🔸 LOADING SCREEN -->
+    <div id="loading-screen">
+      <div class="loader-content">
+        <h1>Warmam 🍚</h1>
+        <div class="loading-spinner"></div>
+        <p>Menyiapkan pesananmu...</p>
+      </div>
+    </div>
   <header>
-    <h1 class="logo">FoodieGo 🍔</h1>
+    <h1 class="logo"> 
+      <a href="beranda.html" class="logo-link">Warmam 🍚</a>
+    </h1>
     <nav>
       <ul>
-        <li><a href="index.html">Beranda</a></li>
+        <li><a href="beranda.html">Beranda</a></li>
         <li><a href="pesanan.html" class="active">Pesanan Saya</a></li>
       </ul>
     </nav>
@@ -20,23 +30,101 @@
     <h2>Pesanan Saya</h2>
     <ul id="pesanan-list"></ul>
     <h3 id="pesanan-total"></h3>
+    <h3 id="pesanan-total"></h3>
+    <div id="ai-estimasi" class="ai-estimasi-box" style="display:none;"></div>
 
+    
     <div class="action-buttons">
       <button id="btn-clear" class="clear-btn">Batalkan Semua Pesanan</button>
       <button id="btn-update" class="update-btn">Update Pesanan</button>
     </div>
-    
-    
   </main>
+  <!-- POPUP KONFIRMASI HAPUS PESANAN -->
+<div id="popup-hapus-pesanan" class="popup-overlay">
+  <div class="popup-box">
+    <h3 style="color: #ff5722;">🗑️ Batalkan Semua Pesanan?</h3>
+    <p>Apakah kamu yakin ingin menghapus semua pesanan?</p>
+    <div class="popup-actions">
+      <button id="btn-hapus-tidak" class="btn btn-danger">Batal</button>
+      <button id="btn-hapus-ya" class="btn btn-success">Ya, Hapus</button>
+    </div>
+  </div>
+</div>
 
+  <!-- === PESANAN TERBARU === -->
   <section class="pesanan-terbaru-container">
     <h2 style="color: #ff5722;">Pesanan Saya</h2>
-    <div id="pesanan-terbaru" class="pesanan-terbaru-box"></div>
-  </section>
   
+    <div id="pesanan-terbaru" class="pesanan-terbaru-box"></div>
+  
+    <!-- 🟢 Tambahan tombol Bayar Sekarang -->
+    <div class="bayar-container">
+      <button id="btn-bayar" class="btn-bayar">💳 Bayar Sekarang</button>
+    </div>
+  </section>
+  <!-- POPUP KONFIRMASI PEMBAYARAN -->
+<div id="popup-konfirmasi" class="popup-container">
+  <div class="popup-box">
+    <h3>💳 Konfirmasi Pembayaran</h3>
+    <p id="popup-total">Total pembayaran kamu: Rp 0</p>
+    <div class="popup-actions">
+      <button id="btn-batal-bayar" class="popup-btn cancel">Batal</button>
+      <button id="btn-lanjut-bayar" class="popup-btn confirm">Bayar Sekarang</button>
+    </div>
+  </div>
+</div>
+
+<!-- POPUP BERHASIL -->
+<div id="popup-berhasil" class="popup-container">
+  <div class="popup-box">
+    <h3>✅ Pembayaran Berhasil!</h3>
+    <p>Terima kasih sudah memesan di <strong>Warmam 🍚</strong></p>
+    <button id="close-popup-berhasil" class="popup-btn confirm">Tutup</button>
+  </div>
+</div>
+<!-- 🧾 POPUP METODE PEMBAYARAN -->
+<div id="popup-metode" class="popup-overlay">
+  <div class="popup-box">
+    <h2><i>💳</i> Pilih Metode Pembayaran</h2>
+
+    <div class="metode-list">
+      <label><input type="radio" name="metode" value="Dana"> Dana</label>
+      <label><input type="radio" name="metode" value="OVO"> OVO</label>
+      <label><input type="radio" name="metode" value="GoPay"> GoPay</label>
+      <label>
+        <input type="radio" name="metode" value="Transfer Bank" id="metode-bank">
+        Transfer Bank
+      </label>
+
+      <!-- 📦 daftar bank (muncul kalau pilih Transfer Bank) -->
+      <div id="bank-options" class="bank-options">
+        <label><input type="radio" name="bank" value="BCA"> Bank BCA</label>
+        <label><input type="radio" name="bank" value="BRI"> Bank BRI</label>
+        <label><input type="radio" name="bank" value="Mandiri"> Bank Mandiri</label>
+        <label><input type="radio" name="bank" value="BNI"> Bank BNI</label>
+      </div>
+      <label><input type="radio" name="metode" value="COD"> Bayar di Tempat (COD)</label>
+    </div>
+
+    <div class="popup-actions">
+      <button id="btn-batal-metode" class="btn btn-danger">Batal</button>
+      <button id="btn-konfirmasi-metode" class="btn btn-success">Lanjutkan</button>
+    </div>
+  </div>
+</div>
+<!-- POPUP NOTIFIKASI -->
+<div id="popup-alert" class="popup-overlay">
+  <div class="popup-box small">
+    <h3 id="popup-alert-title">Notifikasi</h3>
+    <p id="popup-alert-message"></p>
+    <div class="popup-actions">
+      <button id="popup-alert-ok" class="btn btn-success">OK</button>
+    </div>
+  </div>
+</div>
 
   <footer>
-    <p>© 2025 FoodieGo Copyright by Kelompok 8</p>
+    <p>© 2025 Warmam Copyright by Kelompok 8</p>
   </footer>
 
   <script>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pemesanan Makanan Online</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- 🔸 LOADING SCREEN -->
+  <div id="loading-screen">
+    <div class="loader-content">
+      <h1>Warmam 🍚</h1>
+      <div class="loading-spinner"></div>
+      <p>Menyiapkan makananmu...</p>
+    </div>
+  </div>
+  <!-- 🔸 HEADER -->
+  <header>
+    <h1 class="logo">Warmam 🍚</h1>
+    <nav>
+      <ul>
+        <li><a href="beranda.html" class="active">Beranda</a></li>
+        <li><a href="pesanan.html">Pesanan Saya</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 🔸 HERO -->
+  <section class="hero">
+    <div class="hero-slider smooth-scroll">
+      <div class="slide"><img src="images/mie.jpg" alt="Makanan 1"></div>
+      <div class="slide"><img src="images/gacoan.jpeg" alt="Makanan 2"></div>
+      <div class="slide"><img src="images/teh.jpg" alt="Makanan 3"></div>
+      <div class="slide"><img src="images/ayam.jpg" alt="Makanan 4"></div>
+      <div class="slide"><img src="images/bakso.jpg" alt="Makanan 5"></div>
+      <div class="slide"><img src="images/imagesasgor.jpg" alt="Makanan 6"></div>
+      <div class="slide"><img src="images/kentang.jpeg" alt="Makanan 7"></div>
+      <div class="slide"><img src="images/kopi.jpeg" alt="Makanan 8"></div>
+      <div class="slide"><img src="images/es cincau.jpeg" alt="Makanan 9"></div>
+      <div class="slide"><img src="images/es coklat.jpeg" alt="Makanan 10"></div>
+      <div class="slide"><img src="images/udang.jpeg" alt="Makanan 11"></div>
+      <div class="slide"><img src="images/cireng.jpeg" alt="Makanan 12"></div>
+
+      <div class="slide"><img src="images/mie.jpg" alt="Makanan 1"></div>
+      <div class="slide"><img src="images/gacoan.jpeg" alt="Makanan 2"></div>
+      <div class="slide"><img src="images/teh.jpg" alt="Makanan 3"></div>
+      <div class="slide"><img src="images/ayam.jpg" alt="Makanan 4"></div>
+      <div class="slide"><img src="images/bakso.jpg" alt="Makanan 5"></div>
+      <div class="slide"><img src="images/imagesasgor.jpg" alt="Makanan 6"></div>
+      <div class="slide"><img src="images/kentang.jpeg" alt="Makanan 7"></div>
+      <div class="slide"><img src="images/kopi.jpeg" alt="Makanan 8"></div>
+      <div class="slide"><img src="images/es cincau.jpeg" alt="Makanan 9"></div>
+      <div class="slide"><img src="images/es coklat.jpeg" alt="Makanan 10"></div>
+      <div class="slide"><img src="images/udang.jpeg" alt="Makanan 11"></div>
+      <div class="slide"><img src="images/cireng.jpeg" alt="Makanan 12"></div>
+    </div>
+    <div class="hero-content">
+    <h2>Pesan makanan favoritmu dengan cepat dan mudah!</h2>
+    <input 
+    type="text" 
+    id="search-input" 
+    placeholder="Cari makanan..." 
+  />
+
+ 
+  </section>
+  <!-- 🔹 Filter Menu -->
+  <div class="filter-container">
+    <button class="filter-btn active" data-category="all">Semua 🍱</button>
+    <button class="filter-btn" data-category="makanan">Makanan 🍜</button>
+    <button class="filter-btn" data-category="minuman">Minuman 🍹</button>
+    <button class="filter-btn" data-category="snack">Snack 🍟</button>
+  </div>
+</section>
+
+<div id="toast" class="toast">Item ditambahkan ke keranjang!</div>
+
+<!-- 🔸 REKOMENDASI MENU (AI) -->
+<section id="ai-rekomendasi" class="rekomendasi">
+  <h3>✨ Rekomendasi untuk Kamu</h3>
+  <div id="rekomendasi-container" class="menu-container">
+    <!-- Rekomendasi AI akan tampil di sini -->
+  </div>
+</section>
+
+  <!-- 🔸 MENU -->
+  <section class="menu">
+    <h3>Menu Populer</h3>
+    <div class="menu-container" id="menu-container">
+      <!-- Item makanan akan diisi lewat JavaScript -->
+    </div>
+  </section>
+
+  <!-- 🔸 KERANJANG (Sidebar) -->
+  <section class="cart" id="cart">
+    <h3>Keranjang Pesanan 🛒</h3>
+    <ul id="cart-items"></ul>
+    <p id="total">Total: Rp 0</p>
+    <button id="checkout-btn">Checkout</button>
+  </section>
+  <!-- POPUP NOTIFIKASI -->
+<div id="popup-alert" class="popup-overlay">
+  <div class="popup-box small">
+    <h3 id="popup-alert-title">Notifikasi</h3>
+    <p id="popup-alert-message"></p>
+    <div class="popup-actions">
+      <button id="popup-alert-ok" class="btn btn-success">OK</button>
+    </div>
+  </div>
+</div>
+<!-- 🔍 Fitur Pencarian Gambar -->
+
+<!-- 💬 Chatbot -->
+<div id="chat-toggle">💬</div>
+
+<div id="chat-box">
+  <div id="chat-header">Asisten Warmam 🤖</div>
+  <div id="chat-messages"></div>
+  <input type="text" id="chat-input" placeholder="Tulis pesan di sini..." />
+</div>
+
+
+
+  <!-- 🔸 FOOTER -->
+  <footer>
+    <p>© 2025 Warmam Copyright by Kelompok 8.</p>
+  </footer>
+
+  <!-- 🔸 FLOATING CART ICON -->
+  <button id="cart-toggle" class="cart-toggle" title="Lihat Keranjang">
+    🛒
+    <span id="cart-count" class="cart-count">0</span>
+  </button>
+  
+  <!-- 🔸 SCRIPT -->
+  <script src="script.js"></script>
+
+  <!-- Toggle Cart -->
+  <script>
+    
+    document.addEventListener("DOMContentLoaded", () => {
+      const cartToggle = document.getElementById('cart-toggle');
+      const cart = document.getElementById('cart');
+  
+      // efek klik kecil (animasi)
+      cartToggle.addEventListener('click', () => {
+        cartToggle.classList.add('clicked');
+        setTimeout(() => cartToggle.classList.remove('clicked'), 300);
+  
+        // toggle keranjang tampil / sembunyi
+        cart.classList.toggle('show');
+      });
+    });
+  </script>
+  
+</body>
+</html>

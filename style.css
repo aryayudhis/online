@@ -1,88 +1,3 @@
-/* =============================
-   📱 RESPONSIVE DESIGN SECTION
-   ============================= */
-
-/* Tablet (≤1024px) */
-@media (max-width: 1024px) {
-  header nav ul {
-    gap: 1rem;
-  }
-
-  .hero h1 {
-    font-size: 1.5rem;
-  }
-
-  .search-box {
-    width: 80%;
-  }
-
-  .menu-container {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  }
-}
-
-/* HP (≤768px) */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  header nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding: 0;
-  }
-
-  .hero {
-    padding: 2rem 1rem;
-    text-align: center;
-  }
-
-  .search-box {
-    width: 100%;
-  }
-
-  .menu-container {
-    grid-template-columns: 1fr 1fr; /* dua kolom */
-    gap: 1rem;
-    padding: 0 1rem;
-  }
-
-  .card {
-    width: 100%;
-  }
-
-  /* Floating Cart */
-  .cart-toggle {
-    bottom: 1rem;
-    right: 1rem;
-    width: 60px;
-    height: 60px;
-    font-size: 1.5rem;
-  }
-}
-
-/* HP Kecil (≤480px) */
-@media (max-width: 480px) {
-  .menu-container {
-    grid-template-columns: 1fr; /* satu kolom */
-  }
-
-  .hero h1 {
-    font-size: 1.2rem;
-  }
-
-  .card img {
-    height: 150px;
-  }
-
-  button {
-    font-size: 0.9rem;
-  }
-}
-
 /* RESET DASAR */
 * {
   margin: 0;
@@ -547,6 +462,17 @@ nav a.active {
 
 
 /* PESANAN SAYA */
+.logo a {
+  color: inherit;            
+  text-decoration: none;     
+  font-weight: inherit;      
+}
+
+.logo a:hover {
+  opacity: 0.85;             
+  text-decoration: none;     
+}
+
 .orders {
   padding: 3rem 5%;
 }
@@ -910,6 +836,553 @@ ul {
 
 .pesanan-terbaru {
   margin-top: 20px;
-  font-size: 15px;
-  line-height: 1.8;
+  font-size: 20px;
+  line-height: 0.5;
 }
+/* === FILTER MENU === */
+.filter-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  background-color: #fff;
+  border: 2px solid #ff5722;
+  color: #ff5722;
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background-color: #ff5722;
+  color: white;
+}
+
+/* === TOAST NOTIFICATION === */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #080808;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  z-index: 9999;
+  font-weight: 500;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* === LOADING SCREEN === */
+#loading-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: #ff7043;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Kontainer utama loading (agar logo & spinner sejajar vertikal) */
+.loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Logo */
+.loading-logo {
+  font-size: 2.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Spinner tepat di tengah */
+.loading-spinner {
+  width: 70px;
+  height: 70px;
+  border: 6px solid rgba(255, 255, 255, 0.3);
+  border-top: 6px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 15px auto;
+}
+/* Animasi */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#loading-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+/* === TOMBOL BAYAR === */
+.bayar-container {
+  text-align: center;
+  margin-top: 25px;
+}
+
+.btn-bayar {
+  background: linear-gradient(90deg, #ff7043, #ff5722);
+  color: white;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.btn-bayar:hover {
+  background: linear-gradient(90deg, #ff8a65, #ff7043);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+}
+/* === POPUP === */
+.popup-container {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.popup-container.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.popup-box {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+  animation: popIn 0.4s ease;
+  max-width: 380px;
+  width: 90%;
+}
+
+.popup-box h3 {
+  color: #ff5722;
+  margin-bottom: 12px;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.popup-btn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.popup-btn.confirm {
+  background-color: #43a047;
+}
+
+.popup-btn.confirm:hover {
+  background-color: #2e7d32;
+}
+
+.popup-btn.cancel {
+  background-color: #e53935;
+}
+
+.popup-btn.cancel:hover {
+  background-color: #c62828;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+/* === POPUP METODE PEMBAYARAN === */
+.popup-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.45);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  transition: opacity 0.3s ease;
+}
+
+.popup-overlay.show {
+  display: flex;
+}
+
+.popup-box {
+  background: white;
+  border-radius: 15px;
+  padding: 25px 30px;
+  text-align: center;
+  width: 360px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+  animation: popFade 0.25s ease;
+}
+
+@keyframes popFade {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.popup-box h2 {
+  color: #ff5722;
+  margin-bottom: 15px;
+}
+
+.metode-list {
+  text-align: left;
+  margin: 15px 0 25px;
+}
+
+.metode-list label {
+  display: block;
+  margin: 8px 0;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.popup-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 15px;
+}
+
+.btn {
+  padding: 10px 18px;
+  border-radius: 8px;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  transition: transform 0.2s ease;
+}
+
+.btn-danger {
+  background: #d32f2f;
+}
+.btn-danger:hover {
+  background: #b71c1c;
+  transform: scale(1.03);
+}
+
+.btn-success {
+  background: #388e3c;
+}
+.btn-success:hover {
+  background: #2e7d32;
+  transform: scale(1.03);
+}
+.bank-options {
+  margin-left: 25px;
+  margin-top: 8px;
+  display: none;
+  animation: fadeIn 0.3s ease;
+  padding-left: 10px;
+  border-left: 3px solid #ff5722;
+}
+
+.bank-options label {
+  display: block;
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.searcch-ai{
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.image-search-btn{
+  background: linear-gradient(90deg, #ff7043, #ff5722);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.image-search-btn:hover{
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #ff8a65, #ff5722);
+}
+
+#chat-toggle, #cart-toggle {
+  position: fixed;
+  bottom: 20px;
+  width: 55px;
+  height: 55px;
+  border: none;
+  border-radius: 50%;
+  font-size: 22px;
+  color: white;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Warna & posisi tombol */
+#chat-toggle {
+  right: 90px; /* sejajar tapi agak kiri */
+  background-color: #ff5722;
+}
+#chat-toggle:hover {
+  background-color: #e64a19;
+  transform: scale(1.1);
+}
+
+#cart-toggle {
+  right: 20px;
+  background-color: #ff7043;
+}
+#cart-toggle:hover {
+  background-color: #ff5722;
+  transform: scale(1.1);
+}
+
+/* Chatbox muncul di atas tombol */
+#chat-box {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  max-height: 420px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.25);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1100;
+}
+
+#chat-box.show {
+  display: flex;
+}
+#chat-box.show { display: flex; }
+
+#chat-header {
+  background: #ff7043;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-weight: 600;
+}
+
+#chat-messages {
+  padding: 10px;
+  height: 240px;
+  overflow-y: auto;
+  font-size: 14px;
+}
+
+#chat-input {
+  border: none;
+  border-top: 1px solid #ddd;
+  padding: 10px;
+  outline: none;
+  font-size: 14px;
+}
+
+#chat-messages .bot {
+  margin: 8px 0;
+  background: #ffe0b2;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+#chat-messages .user {
+  text-align: right;
+  margin: 8px 0;
+  background: #ffccbc;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: #333;
+}
+#chat-box {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  width: 320px;
+  max-height: 420px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+}
+#chat-box.show { display: flex; }
+.quick-replies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 8px;
+}
+.quick-btn {
+  background: #ff5722;
+  color: #fff;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+}
+.quick-btn:hover { background: #e64a19; }
+/* SEARCH wrapper already exists; ensure input has enough right padding */
+.search-wrapper { position: relative; display: inline-flex; align-items: center; }
+#search-input { padding-right: 48px; }
+
+/* camera icon inside input */
+.image-search-btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
+  color: #ff5722;
+  background: none;
+  border: none;
+}
+.ai-status-box {
+  background: #fff7e6;
+  border-left: 6px solid #ff9800;
+  padding: 15px 20px;
+  margin-top: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  font-size: 15px;
+  line-height: 1.5;
+  animation: fadeIn 0.8s ease;
+}
+.ai-status-step {
+  font-weight: 600;
+  color: #ff5722;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.ai-estimasi-box {
+  background: #f9f9f9;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 20px;
+  font-size: 15px;
+  color: #333;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #eee;
+  border-radius: 6px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  transition: width 0.5s ease;
+}
+.ai-toast {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  background: #16a34a;
+  color: white;
+  padding: 14px 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+  z-index: 9999;
+}
+.ai-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+.rekomendasi {
+  background: #fff8f0;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px auto;
+  width: 90%;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.rekomendasi h3 {
+  color: #ff7b00;
+  margin-bottom: 10px;
+}
+
+.rekomendasi .menu-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 12px;
+}
+
